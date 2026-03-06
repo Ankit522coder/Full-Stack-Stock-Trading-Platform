@@ -24,8 +24,8 @@ function Stats() {
                 <div className='col-12 col-lg-6 p-3 p-md-5 text-center'>
                     <img src='Image/ecosystem.png' alt='Ecosystem' className='img-fluid'/>
                     <div className='d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4'>
-                        <a href='' style={{textDecoration:"none"}}>Explore our products <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        <a href='' style={{textDecoration:"none"}}>Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href='/' style={{textDecoration:"none"}}>Explore our products <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href='/' style={{textDecoration:"none"}}>Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -34,3 +34,5 @@ function Stats() {
 }
 
 export default Stats;
+
+

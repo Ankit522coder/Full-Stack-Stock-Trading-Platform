@@ -7,7 +7,7 @@ function Pricing() {
                 <div className='col-12 col-lg-4'>
                     <h1 className='mb-3 fs-2'>Unbeatable pricing</h1>
                     <p className="text-muted">We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
-                    <a href='' style={{textDecoration:"none"}}>See Pricing <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href='/' style={{textDecoration:"none"}}>See Pricing <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <div className='col-lg-1 d-none d-lg-block'></div>
                 <div className='col-12 col-lg-7 mb-5'>
@@ -28,3 +28,5 @@ function Pricing() {
 }
 
 export default Pricing;
+
+

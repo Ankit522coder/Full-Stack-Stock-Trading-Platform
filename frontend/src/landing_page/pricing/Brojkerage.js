@@ -5,7 +5,7 @@ function Brokerage() {
         <div className="container">
             <div className="row p-3 p-md-5 mt-4 mt-md-5 text-center border-top g-4">
                 <div className="col-12 col-lg-8 p-2 p-md-4">
-                   <a href="" style={{ textDecoration: "none" }}><h3 className="fs-5">Brokerage calculator</h3></a>
+                   <a href="/" style={{ textDecoration: "none" }}><h3 className="fs-5">Brokerage calculator</h3></a>
                    <ul style={{ textAlign: "left", lineHeight: "2.2", fontSize: "14px" }} className="text-muted mt-4 mt-md-5">
                       <li>Call & Trade and RMS auto-squareoff:Additional charges of ₹50 + GST per order.</li>
                       <li>Digital contract notes will be sent via e-mail.</li>
@@ -16,7 +16,7 @@ function Brokerage() {
                    </ul>
                 </div>
                 <div className="col-12 col-lg-4 p-2 p-md-4">
-                   <a href="" style={{ textDecoration: "none" }}><h3 className="fs-5">List of charges</h3></a>
+                   <a href="/" style={{ textDecoration: "none" }}><h3 className="fs-5">List of charges</h3></a>
                 </div>
             </div>
         </div>
@@ -24,3 +24,5 @@ function Brokerage() {
 }
 
 export default Brokerage;
+
+

@@ -25,3 +25,5 @@ function LeftSection({imageURL, productName, productDesription, tryDemo, learnMo
 }
 
 export default LeftSection;
+
+

@@ -18,3 +18,5 @@ describe("Hero Component", () => {
         expect(signupButton).toHaveClass("btn-primary");
     });
 });
+
+

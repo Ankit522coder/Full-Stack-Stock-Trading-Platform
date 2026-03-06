@@ -20,3 +20,5 @@ function RightSection({imageURL, productName, productDesription, tryDemo, learnM
 }
 
 export default RightSection;
+
+
