@@ -2,8 +2,14 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/UserModel");
 const { getAuthCookieOptions } = require("../util/cookieOptions");
 
+const getToken = (req) => {
+  const authorization = req.get("authorization") || "";
+  const bearerToken = authorization.match(/^Bearer\s+(.+)$/i)?.[1];
+  return bearerToken || req.cookies.token;
+};
+
 const userVerification = async (req, res) => {
-  const token = req.cookies.token;
+  const token = getToken(req);
   if (!token) {
     return res.status(401).json({ status: false, message: "Unauthorized" });
   }
@@ -23,7 +29,7 @@ const userVerification = async (req, res) => {
 };
 
 const authenticateUser = async (req, res, next) => {
-  const token = req.cookies.token;
+  const token = getToken(req);
   if (!token) {
     return res.status(401).json({ success: false, message: "Unauthorized" });
   }

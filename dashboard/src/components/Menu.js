@@ -22,6 +22,7 @@ const Menu = ({ username }) => {
     } catch (error) {
       // Redirect regardless of API response.
     } finally {
+      sessionStorage.removeItem("authToken");
       window.location.href = LANDING_URL;
     }
   };

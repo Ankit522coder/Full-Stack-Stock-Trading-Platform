@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API_BASE_URL, DASHBOARD_URL } from "../../config";
+import { API_BASE_URL } from "../../config";
+import redirectToDashboard from "./redirectToDashboard";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -24,14 +25,7 @@ function Login() {
       );
 
       if (data.success) {
-        if (!DASHBOARD_URL) {
-          setMessage(
-            "Login succeeded, but the dashboard URL is not configured. Set REACT_APP_DASHBOARD_URL in Vercel."
-          );
-          return;
-        }
-
-        window.location.href = DASHBOARD_URL;
+        await redirectToDashboard(data.token);
         return;
       }
 

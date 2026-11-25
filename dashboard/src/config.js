@@ -10,3 +10,13 @@ export const API_BASE_URL = (
 export const LANDING_URL =
   process.env.REACT_APP_LANDING_URL ||
   (isLocalhost ? "http://localhost:3000" : "https://zerodha-frontend-taupe.vercel.app");
+
+const handoffToken = new URLSearchParams(window.location.hash.slice(1)).get("token");
+if (handoffToken) {
+  sessionStorage.setItem("authToken", handoffToken);
+  window.history.replaceState(
+    window.history.state,
+    "",
+    `${window.location.pathname}${window.location.search}`
+  );
+}
