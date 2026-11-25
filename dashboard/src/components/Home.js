@@ -3,19 +3,18 @@ import axios from "axios";
 
 import Dashboard from "./Dashboard";
 import TopBar from "./TopBar";
-
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
-const LANDING_URL = process.env.REACT_APP_LANDING_URL || "http://localhost:3000";
+import { LANDING_URL } from "../config";
 
 const Home = () => {
   const [isChecking, setIsChecking] = useState(true);
   const [username, setUsername] = useState("");
+  const [sessionError, setSessionError] = useState("");
 
   useEffect(() => {
     const verifySession = async () => {
       try {
         const { data } = await axios.post(
-          `${API_BASE_URL}/auth/verify`,
+          "/auth/verify",
           {},
           { withCredentials: true }
         );
@@ -27,8 +26,15 @@ const Home = () => {
 
         setUsername(data.user?.username || "");
       } catch (error) {
-        window.location.href = `${LANDING_URL}/login`;
-        return;
+        if (error.response?.status === 401) {
+          window.location.href = `${LANDING_URL}/login`;
+          return;
+        }
+
+        console.error("Unable to verify session:", error);
+        setSessionError(
+          "Unable to check your session. Check your connection and try again."
+        );
       } finally {
         setIsChecking(false);
       }
@@ -39,6 +45,17 @@ const Home = () => {
 
   if (isChecking) {
     return <div style={{ padding: "24px" }}>Checking session...</div>;
+  }
+
+  if (sessionError) {
+    return (
+      <div style={{ padding: "24px" }} role="alert">
+        <p>{sessionError}</p>
+        <button type="button" onClick={() => window.location.reload()}>
+          Try again
+        </button>
+      </div>
+    );
   }
 
   return (

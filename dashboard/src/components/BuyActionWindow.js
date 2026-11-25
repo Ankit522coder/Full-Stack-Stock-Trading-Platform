@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import GeneralContext from "./GeneralContext";
+import { LANDING_URL } from "../config";
 
 import "./BuyActionWindow.css";
 
@@ -28,7 +29,7 @@ const BuyActionWindow = ({ uid }) => {
       }
     } catch (error) {
       if (error.response?.status === 401) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${LANDING_URL}/login`;
       }
     }
   };

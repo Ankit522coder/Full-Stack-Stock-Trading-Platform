@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
-const DASHBOARD_URL = process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
+import { API_BASE_URL, DASHBOARD_URL } from "../../config";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -30,6 +28,13 @@ function Signup() {
       );
 
       if (data.success) {
+        if (!DASHBOARD_URL) {
+          setMessage(
+            "Account created, but the dashboard URL is not configured. Set REACT_APP_DASHBOARD_URL in Vercel."
+          );
+          return;
+        }
+
         window.location.href = DASHBOARD_URL;
         return;
       }

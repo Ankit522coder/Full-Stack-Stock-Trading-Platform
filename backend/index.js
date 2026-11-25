@@ -18,9 +18,15 @@ const url = process.env.MONGO_URL;
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   process.env.DASHBOARD_URL,
+  "https://zerodha-frontend-taupe.vercel.app",
+  "https://zerodha-dashboard-xi.vercel.app",
   "http://localhost:3000",
   "http://localhost:3001",
-].filter(Boolean);
+]
+  .filter(Boolean)
+  .flatMap((origins) => origins.split(","))
+  .map((origin) => origin.trim().replace(/\/$/, ""))
+  .filter(Boolean);
 
 const app = express();
 
@@ -37,7 +43,7 @@ app.use(
         return callback(null, true);
       }
 
-      if (allowedOrigins.includes(origin)) {
+      if (allowedOrigins.includes(origin.replace(/\/$/, ""))) {
         return callback(null, true);
       }
 

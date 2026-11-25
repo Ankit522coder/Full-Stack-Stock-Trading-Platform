@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+import { LANDING_URL } from "../config";
 
 // import { holdings } from "../data/data";
 
@@ -14,7 +15,7 @@ const Holdings = () => {
         setAllHoldings(res.data);
       } catch (error) {
         if (error.response?.status === 401) {
-          window.location.href = "http://localhost:3000/login";
+          window.location.href = `${LANDING_URL}/login`;
           return;
         }
       }

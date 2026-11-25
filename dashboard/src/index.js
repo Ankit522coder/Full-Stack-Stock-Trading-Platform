@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
 import Home from "./components/Home";
+import { API_BASE_URL } from "./config";
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:3002";
+axios.defaults.baseURL = API_BASE_URL;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

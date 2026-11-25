@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
+import { API_BASE_URL } from "../../config";
 
 function AuthHome() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -24,7 +24,14 @@ function AuthHome() {
           navigate("/login");
         }
       } catch (error) {
-        navigate("/login");
+        if (error.response?.status === 401) {
+          navigate("/login");
+        } else {
+          console.error("Unable to verify session:", error);
+          setErrorMessage(
+            "Unable to check your session. Check your connection and try again."
+          );
+        }
       } finally {
         setLoading(false);
       }
@@ -44,6 +51,19 @@ function AuthHome() {
 
   if (loading) {
     return <div className="auth-page"><p>Checking session...</p></div>;
+  }
+
+  if (errorMessage) {
+    return (
+      <div className="auth-page">
+        <div className="auth-card" role="alert">
+          <p>{errorMessage}</p>
+          <button type="button" onClick={() => window.location.reload()}>
+            Try again
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (

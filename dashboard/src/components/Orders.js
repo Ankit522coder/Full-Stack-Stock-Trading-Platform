@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { LANDING_URL } from "../config";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -12,7 +13,7 @@ const Orders = () => {
       setOrders(data.orders || []);
     } catch (error) {
       if (error.response?.status === 401) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${LANDING_URL}/login`;
       }
     } finally {
       setLoading(false);
@@ -40,7 +41,7 @@ const Orders = () => {
       }
     } catch (error) {
       if (error.response?.status === 401) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${LANDING_URL}/login`;
       }
     }
   };

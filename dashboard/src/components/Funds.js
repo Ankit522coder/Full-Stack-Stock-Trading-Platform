@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const LANDING_URL = process.env.REACT_APP_LANDING_URL || "http://localhost:3000";
+import { LANDING_URL } from "../config";
 
 const Funds = () => {
   return (
